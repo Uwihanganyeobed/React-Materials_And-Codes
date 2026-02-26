@@ -1,15 +1,12 @@
-import Welcome from "./welcome";
 
-export default function Navibar () {
-    return (
-        <div>
-            <nav className="nav">
-                <a href="/">Home</a>
-                <a href="/">Shop</a>
-                <a href="/">Products</a>
-                <a href="/">Login</a>
-            </nav>
-        </div>
-        
-    )
-};
+export default function Navbar() {
+  return (
+    <nav className='nav'>
+     <a href={"/"}>Home</a>
+     <a href={"/product"}>Product</a>
+     <a href={"/contact"}>Contact</a>
+     <a href={"/login"}>login</a>
+
+      </nav>
+  )
+}

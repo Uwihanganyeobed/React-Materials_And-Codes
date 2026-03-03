@@ -1,0 +1,205 @@
+🎯 Project: Student Course Management App
+
+A simple React app where students can:
+
+View list of courses
+
+Navigate between pages
+
+See course details
+
+Show "Open" or "Closed" status
+
+Filter open courses
+----------------------------------------------------------------
+
+This project will test:
+✅ Arrays
+✅ map() rendering
+✅ Conditional rendering
+✅ Props
+✅ Components
+✅ Basic navigation (React Router)
+
+🧩 Project Structure
+src/
+ ├── components/
+ │     ├── Navbar.jsx
+ │     ├── CourseCard.jsx
+ │
+ ├── pages/
+ │     ├── Home.jsx
+ │     ├── Courses.jsx
+ │     ├── CourseDetails.jsx
+ │
+ ├── data.js                   //this is where you'll prepare your data to send.
+ ├── App.jsx
+ └── main.jsx
+🗂 1️⃣ Step 1: Create Dummy Data (Arrays Practice)
+
+📁 data.js
+
+export const courses = [
+  {
+    id: 1,
+    title: "React Basics",
+    instructor: "John Doe",
+    price: 100,
+    isOpen: true,
+  },
+  {
+    id: 2,
+    title: "JavaScript Advanced",
+    instructor: "Jane Smith",
+    price: 150,
+    isOpen: false,
+  },
+  {
+    id: 3,
+    title: "Node.js Beginner",
+    instructor: "Mark Lee",
+    price: 120,
+    isOpen: true,
+  },
+];
+
+✔ Uses arrays
+✔ Uses objects
+
+🧱 2️⃣ Step 2: Navbar Component (Navigation Practice)
+
+📁 Navbar.jsx
+
+import { Link } from "react-router-dom";
+
+function Navbar() {
+  return (
+    <nav>
+      <Link to="/">Home</Link> | 
+      <Link to="/courses">Courses</Link>
+    </nav>
+  );
+}
+
+export default Navbar;
+
+✔ Navigation
+✔ Components
+
+🏠 3️⃣ Step 3: Home Page
+
+📁 Home.jsx
+
+function Home() {
+  return <h2>Welcome to Course Management App</h2>;
+}
+
+export default Home;
+📚 4️⃣ Step 4: Render Courses (Array + map + Props)
+
+📁 CourseCard.jsx
+
+function CourseCard({ course }) {
+  return (
+    <div className="card">
+      <h3>{course.title}</h3>
+      <p>Instructor: {course.instructor}</p>
+      <p>Price: ${course.price}</p>
+
+      {course.isOpen ? (
+        <p style={{ color: "green" }}>Open</p>
+      ) : (
+        <p style={{ color: "red" }}>Closed</p>
+      )}
+    </div>
+  );
+}
+
+export default CourseCard;
+
+✔ Props
+✔ Conditional rendering
+✔ Styling
+
+📁 Courses.jsx
+
+import { courses } from "../data";
+import CourseCard from "../components/CourseCard";
+
+function Courses() {
+  return (
+    <div>
+      <h2>All Courses</h2>
+
+      {courses.map((course) => (
+        <CourseCard key={course.id} course={course} />
+      ))}
+    </div>
+  );
+}
+
+export default Courses;
+
+✔ Rendering array list
+✔ map()
+✔ Passing props
+
+🔀 5️⃣ Step 5: Setup Navigation (App.jsx)
+
+📁 App.jsx
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Courses from "./pages/Courses";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/courses" element={<Courses />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+✔ Navigation
+✔ Routing
+✔ Component structure
+
+🎨 Basic Styling (Optional Practice)
+
+Add inside index.css
+
+nav {
+  background: #222;
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  margin-right: 10px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px;
+}
+📝 Student Assignment Instructions
+
+Ask them to:
+
+Add a new course to the array.
+
+Show only Open courses.
+
+Add a “Course Details” page.
+
+Navigate to course details using course id.
+
+Add a new field: duration.
